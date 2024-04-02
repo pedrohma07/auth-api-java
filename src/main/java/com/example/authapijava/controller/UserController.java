@@ -25,7 +25,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<CreateUserDTO> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
+    public ResponseEntity<ReturnUserDTO> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
         ReturnUserDTO userExists = this.userService.getUserByEmail(createUserDTO.email());
 
         if(userExists != null){
