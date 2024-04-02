@@ -1,4 +1,4 @@
-package com.example.authapijava.domain.user.dtos;
+package com.example.authapijava.dtos.user;
 import com.example.authapijava.enums.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

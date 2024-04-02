@@ -1,9 +1,9 @@
 package com.example.authapijava.services;
 
-import com.example.authapijava.domain.user.User;
-import com.example.authapijava.domain.user.dtos.CreateUserDTO;
-import com.example.authapijava.domain.user.dtos.ReturnUserDTO;
-import com.example.authapijava.domain.user.dtos.UpdateUserDTO;
+import com.example.authapijava.model.user.User;
+import com.example.authapijava.dtos.user.CreateUserDTO;
+import com.example.authapijava.dtos.user.ReturnUserDTO;
+import com.example.authapijava.dtos.user.UpdateUserDTO;
 import com.example.authapijava.exceptions.NotFoundException;
 import com.example.authapijava.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

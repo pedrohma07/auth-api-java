@@ -1,9 +1,8 @@
 package com.example.authapijava.controller;
 
-import com.example.authapijava.domain.user.User;
-import com.example.authapijava.domain.user.dtos.CreateUserDTO;
-import com.example.authapijava.domain.user.dtos.ReturnUserDTO;
-import com.example.authapijava.domain.user.dtos.UpdateUserDTO;
+import com.example.authapijava.dtos.user.CreateUserDTO;
+import com.example.authapijava.dtos.user.ReturnUserDTO;
+import com.example.authapijava.dtos.user.UpdateUserDTO;
 import com.example.authapijava.exceptions.EmailAlreadyExistsException;
 import com.example.authapijava.exceptions.NotFoundException;
 import com.example.authapijava.services.UserService;
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor

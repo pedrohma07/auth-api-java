@@ -1,4 +1,4 @@
-package com.example.authapijava.domain.user;
+package com.example.authapijava.model.user;
 
 import com.example.authapijava.enums.UserRole;
 import jakarta.persistence.*;

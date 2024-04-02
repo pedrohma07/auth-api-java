@@ -1,6 +1,6 @@
 package com.example.authapijava.repositories;
 
-import com.example.authapijava.domain.user.User;
+import com.example.authapijava.model.user.User;
 import jakarta.annotation.Nonnull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
