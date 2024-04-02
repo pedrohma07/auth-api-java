@@ -70,18 +70,15 @@ public class UserService {
     }
 
     public ReturnUserDTO getUserByEmail(String email) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
 
-        if (optionalUser.isPresent()){
-            User user = optionalUser.get();
-            return new ReturnUserDTO(
-                    user.getId(),
-                    user.getName(),
-                    user.getEmail(),
-                    user.getRole()
-            );
-        }
-        return null;
+        return new ReturnUserDTO(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole()
+        );
+
     }
 
     public void updateUser(String id, UpdateUserDTO updateUserDTO) {
@@ -100,11 +97,10 @@ public class UserService {
     }
 
     public void updateUserByEmail(String email, UpdateUserDTO updateUserDTO) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
-        if (optionalUser.isEmpty()) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
             throw new NotFoundException("User not found");
         }
-        User user = optionalUser.get();
 
         user.setName(updateUserDTO.name() != null ? updateUserDTO.name() : user.getName());
         user.setPassword(updateUserDTO.password() != null ? updateUserDTO.password() : user.getPassword());
