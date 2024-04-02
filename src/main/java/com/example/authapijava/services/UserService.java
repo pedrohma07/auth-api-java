@@ -72,12 +72,15 @@ public class UserService {
     public ReturnUserDTO getUserByEmail(String email) {
         User user = userRepository.findByEmail(email);
 
-        return new ReturnUserDTO(
+        if(user != null) {
+            return new ReturnUserDTO(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
                 user.getRole()
-        );
+            );
+        }
+        return null;
 
     }
 

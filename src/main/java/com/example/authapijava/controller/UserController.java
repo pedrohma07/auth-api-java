@@ -22,10 +22,10 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
+
     @PostMapping
     public ResponseEntity<ReturnUserDTO> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
         ReturnUserDTO userExists = this.userService.getUserByEmail(createUserDTO.email());
-
         if(userExists != null){
             throw new EmailAlreadyExistsException();
         }
