@@ -6,6 +6,7 @@ import com.example.authapijava.dtos.user.UpdateUserDTO;
 import com.example.authapijava.exceptions.EmailAlreadyExistsException;
 import com.example.authapijava.exceptions.NotFoundException;
 import com.example.authapijava.services.UserService;
+import com.example.authapijava.utils.ValidRequestDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<ReturnUserDTO> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
         ReturnUserDTO userExists = this.userService.getUserByEmail(createUserDTO.email());
+
         if(userExists != null){
             throw new EmailAlreadyExistsException();
         }
@@ -56,7 +58,9 @@ public class UserController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> updateUser(@PathVariable String id, @RequestBody UpdateUserDTO updateUserDTO) {
+    public ResponseEntity<Void> updateUser(@PathVariable String id, @Valid @RequestBody UpdateUserDTO updateUserDTO) {
+        ValidRequestDTO.isValid(updateUserDTO);
+        System.out.println("updateUserDTO = " + updateUserDTO);
         this.userService.updateUser(id, updateUserDTO);
         return ResponseEntity.noContent().build();
     }
