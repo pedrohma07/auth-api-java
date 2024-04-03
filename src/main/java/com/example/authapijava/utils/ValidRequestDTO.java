@@ -3,7 +3,7 @@ package com.example.authapijava.utils;
 import java.lang.reflect.Field;
 
 public abstract class ValidRequestDTO {
-    public static void isValid(Object obj) {
+    public static void allFielsIsNull(Object obj) {
         Class<?> theClass = obj.getClass();
         Field fields[] = theClass.getDeclaredFields();
         int totalFields = fields.length;
@@ -22,7 +22,8 @@ public abstract class ValidRequestDTO {
                 throw new IllegalArgumentException("All fields are null or you are sending non-existent fields.");
             }
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException("Error accessing fields.");
         }
     }
 }

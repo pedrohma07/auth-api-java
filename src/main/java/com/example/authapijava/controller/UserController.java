@@ -32,7 +32,6 @@ public class UserController {
             throw new EmailAlreadyExistsException();
         }
 
-        System.out.println("createUserDTO = " + createUserDTO);
         return ResponseEntity.ok(this.userService.createUser(createUserDTO));
     }
 
@@ -59,8 +58,7 @@ public class UserController {
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<Void> updateUser(@PathVariable String id, @Valid @RequestBody UpdateUserDTO updateUserDTO) {
-        ValidRequestDTO.isValid(updateUserDTO);
-        System.out.println("updateUserDTO = " + updateUserDTO);
+        ValidRequestDTO.allFielsIsNull(updateUserDTO);
         this.userService.updateUser(id, updateUserDTO);
         return ResponseEntity.noContent().build();
     }
